@@ -86,7 +86,7 @@ release validation, and compliance reporting.
 ## Integration with Infrastructure SAST Standardization
 
 This mapping aligns directly with the enforcement mechanisms defined in the
-`infrastructure-sast-standardization` repository.
+`https://github.com/Asterioxer/infrastructure-sast-standardization` repository.
 
 That repository focuses on **how** SAST is enforced, while this project defines **why**
 specific tools are chosen and **where** they are applied within the pipeline.
