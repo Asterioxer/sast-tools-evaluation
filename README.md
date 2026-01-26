@@ -1,27 +1,109 @@
 # SAST Evaluation and Implementation
 
-This repository serves as the centralized platform for:
+This repository provides a comprehensive, structured evaluation of Static Application
+Security Testing (SAST) tools and demonstrates how they are integrated into standardized
+DevSecOps workflows.
 
-- Static Application Security Testing (SAST) tools evaluation  
-- SAST standardization and implementation  
-- DevSecOps security workflows  
-- Tool-level documentation  
-- CI/CD security integration patterns  
+It combines:
+- Academic-grade tool evaluation
+- Practical Linux-based usage
+- CI/CD workflow examples
+- SAST enforcement standardization
 
-## Structure
+This project serves as a reference architecture for organizations adopting SAST at scale.
 
-docs/report/        → Official submitted evaluation report  
-implementation/     → Standardized SAST enforcement logic  
-tools/              → Tool-specific documentation and commands  
-workflows/          → CI/CD pipeline examples  
-references/         → Security frameworks and standards  
+---
 
-## Purpose
+## Scope
 
-This project bridges the gap between **security research** and **security implementation** by combining:
-- academic-grade evaluation
-- industry-grade tooling
-- DevSecOps workflows
-- infrastructure standardization
+The repository covers the full SAST lifecycle:
+- Tool evaluation and comparison
+- Tool-specific usage and commands
+- CI/CD workflow integration
+- Pipeline enforcement strategy
+- SDLC placement and governance
 
-This is not a demo repository — it is a reference architecture for SAST adoption and enforcement.
+---
+
+## Tools Covered
+
+Enterprise-grade SAST tools:
+- SonarQube
+- Checkmarx
+- Veracode
+- Fortify
+- Synopsys Coverity
+- Klocwork
+
+Developer-centric and open-source tools:
+- Semgrep
+- CodeQL
+- Bandit
+- Brakeman
+- ESLint Security Plugins
+
+Each tool is documented using a standardized structure to ensure consistency and
+comparability.
+
+---
+
+## Repository Structure
+
+docs/report/  
+→ Official submitted SAST evaluation report  
+
+tools/  
+→ Tool-level documentation, commands, and integration rationale  
+
+workflows/  
+→ Reference CI/CD pipelines demonstrating SAST execution  
+
+references/  
+→ SAST standardization and enforcement mappings  
+
+---
+
+## SAST Standardization Model
+
+This repository defines **why** and **where** each SAST tool is used within the SDLC.
+
+Implementation-level enforcement is handled in the companion repository:
+
+🔗 infrastructure-sast-standardization
+
+That repository focuses on **how** SAST is enforced at the infrastructure and pipeline
+level, while this project focuses on **evaluation, selection rationale, and usage guidance**.
+
+Together, both repositories form a complete SAST governance and implementation framework.
+
+---
+
+## How to Navigate This Repository
+
+1. Start with the evaluation report  
+   `docs/report/SAST_Tools_Evaluation_Report.pdf`
+
+2. Explore individual tools  
+   `tools/<tool-name>/`
+
+3. Review CI/CD reference workflows  
+   `workflows/ci-sast-examples/`
+
+4. Understand enforcement strategy  
+   `references/sast-standardization-mapping.md`
+
+---
+
+## Intended Audience
+
+- Security engineers
+- DevSecOps engineers
+- Platform teams
+- Security-focused interns and researchers
+
+---
+
+## Status
+
+This repository represents a **completed reference implementation** and may be extended
+to include DAST, SCA, and secrets scanning in future iterations.
