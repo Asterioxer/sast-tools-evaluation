@@ -69,7 +69,7 @@ This repository defines **why** and **where** each SAST tool is used within the 
 
 Implementation-level enforcement is handled in the companion repository:
 
-🔗 infrastructure-sast-standardization
+🔗 [infrastructure-sast-standardization](https://github.com/Asterioxer/infrastructure-sast-standardization)
 
 That repository focuses on **how** SAST is enforced at the infrastructure and pipeline
 level, while this project focuses on **evaluation, selection rationale, and usage guidance**.
