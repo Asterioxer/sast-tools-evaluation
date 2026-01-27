@@ -1,0 +1,19 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022
+    },
+    "plugins": [
+        "security"
+    ],
+    "extends": [
+        "plugin:security/recommended"
+    ],
+    "rules": {
+        "no-console": "error",
+        "security/detect-eval-with-expression": "warn"
+    }
+}
