@@ -1,0 +1,41 @@
+Run started:2026-01-27 05:47:35.940741+00:00
+
+Test results:
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.3/plugins/b608_hardcoded_sql_expressions.html
+   Location: experiments/vulnerable-apps/python\app.py:6:12
+5	    conn = sqlite3.connect("users.db")
+6	    query = "SELECT * FROM users WHERE name = '" + user_input + "'"
+7	    cursor = conn.execute(query)
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'hardcoded_password'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.3/plugins/b105_hardcoded_password_string.html
+   Location: experiments/vulnerable-apps/python\app.py:10:11
+9	
+10	password = "hardcoded_password"
+11	print(login("admin"))
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 9
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 1
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 1
+		Medium: 1
+		High: 0
+Files skipped (0):
