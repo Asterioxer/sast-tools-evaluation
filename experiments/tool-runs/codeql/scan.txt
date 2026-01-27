@@ -1,0 +1,4 @@
+Running queries.
+[1/1] No need to rerun /usr/local/codeql-home/codeql-repo/python/ql/src/Security/CWE-089/SqlInjection.ql.
+Shutting down query evaluator.
+Interpreting results.
