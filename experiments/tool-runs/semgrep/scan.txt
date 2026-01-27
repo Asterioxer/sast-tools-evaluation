@@ -1,0 +1,51 @@
+                   
+                   
+┌─────────────────┐
+│ 5 Code Findings │
+└─────────────────┘
+                                                  
+    /src/experiments/vulnerable-apps/java/App.java
+    ❯❱ java.lang.security.audit.sqli.jdbc-sqli.jdbc-sqli
+          Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the
+          SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement)    
+          instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.                    
+          Details: https://sg.run/AvkL                                                                        
+                                                                                                              
+            8┆ stmt.execute(query);
+                                                      
+    /src/experiments/vulnerable-apps/javascript/app.js
+     ❱ javascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage
+          A CSRF middleware was not detected in your express application. Ensure you are either using one such
+          as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your    
+          routes with a token or cookies.                                                                     
+          Details: https://sg.run/BxzR                                                                        
+                                                                                                              
+            2┆ const app = express();
+   
+    ❯❱ javascript.express.security.injection.raw-html-format.raw-html-format
+          User data flows into the host portion of this manually-constructed HTML. This can introduce a Cross-
+          Site-Scripting (XSS) vulnerability if this comes from user-provided input. Consider using a         
+          sanitization library such as DOMPurify to sanitize the HTML within.                                 
+          Details: https://sg.run/5DO3                                                                        
+                                                                                                              
+            6┆ res.send("<h1>" + user + "</h1>");
+   
+    ❯❱ javascript.express.security.audit.xss.direct-response-write.direct-response-write
+          Detected directly writing to a Response object from user-defined input. This bypasses any HTML      
+          escaping and may expose your application to a Cross-Site-scripting (XSS) vulnerability. Instead, use
+          'resp.render()' to render safely escaped HTML.                                                      
+          Details: https://sg.run/vzGl                                                                        
+                                                                                                              
+            6┆ res.send("<h1>" + user + "</h1>");
+                                                  
+    /src/experiments/vulnerable-apps/python/app.py
+   ❯❯❱ python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query
+          Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL
+          Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy      
+          provides TextualSQL to easily used prepared statement with named parameters. For complex SQL        
+          composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy   
+          ORM will be a better option.                                                                        
+          Details: https://sg.run/2b1L                                                                        
+                                                                                                              
+            7┆ cursor = conn.execute(query)
+
