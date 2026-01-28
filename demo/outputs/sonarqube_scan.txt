@@ -1,0 +1,8 @@
+SonarQube execution requires a running server and sonar-scanner binary.
+This file represents where the report would be generated (or linked from).
+
+Typical output from scanner:
+INFO: Analysis report generated in 123ms, dir size=200 KB
+INFO: Analysis report compressed in 23ms, zip size=50 KB
+INFO: Analysis report uploaded in 55ms
+INFO: ANALYSIS SUCCESSFUL, you can browse http://localhost:9000/dashboard?id=sast-tools-demo
