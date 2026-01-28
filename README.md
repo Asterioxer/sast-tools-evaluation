@@ -81,6 +81,9 @@ Together, both repositories form a complete SAST governance and implementation f
 4. Understand enforcement strategy  
    `references/sast-standardization-mapping.md`
 
+5. Explore Tool Implementation Demo  
+   `demo/` (contains vulnerable code, configs, and tool outputs)
+
 ---
 
 ## Intended Audience
