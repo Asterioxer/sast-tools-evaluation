@@ -1,1 +1,0 @@
-docker run --rm -v "${PWD}:/src" presidentbeef/brakeman --force -p /src/experiments/vulnerable-apps/ruby-rails -o /src/experiments/tool-runs/brakeman/scan.txt -o /src/experiments/tool-runs/brakeman/output.json

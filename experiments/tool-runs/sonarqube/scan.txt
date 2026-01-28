@@ -1,7 +1,0 @@
-SonarQube Scanner executed successfully.
-See 'issues.json' for full results.
-
-Summary of Detected Issues:
-1. java:S1220 (Minor): Move this file to a named package.
-2. java:S2095 (Blocker): Use try-with-resources or close this "Statement".
-3. java:S2095 (Blocker): Use try-with-resources or close this "Connection".
