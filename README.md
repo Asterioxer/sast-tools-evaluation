@@ -27,20 +27,9 @@ The repository covers the full SAST lifecycle:
 
 ## Tools Covered
 
-Enterprise-grade SAST tools:
-- SonarQube
-- Checkmarx
-- Veracode
-- Fortify
-- Synopsys Coverity
-- Klocwork
-
 Developer-centric and open-source tools:
 - Semgrep
-- CodeQL
-- Bandit
-- Brakeman
-- ESLint Security Plugins
+- Trivy (Container Security)
 
 Each tool is documented using a standardized structure to ensure consistency and
 comparability.
