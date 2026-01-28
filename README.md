@@ -87,7 +87,7 @@ Together, both repositories form a complete SAST governance and implementation f
    `tools/<tool-name>/`
 
 3. Review CI/CD reference workflows  
-   `workflows/ci-sast-examples/`
+   `workflows/ci-sast-examples/` (includes GitHub Actions `.yml` and Nomad `.hcl`)
 
 4. Understand enforcement strategy  
    `references/sast-standardization-mapping.md`
