@@ -25,15 +25,15 @@ Write-Host "Running tools in: $RepoRoot" -ForegroundColor Cyan
 function Invoke-Semgrep {
     Write-Host "`n[Semgrep] Starting Scan..." -ForegroundColor Yellow
     # Using the same image as in Nomad job
-    docker run --rm -v "${RepoRoot}:/src" returntocorp/semgrep:latest semgrep scan --config=auto --json --output /src/semgrep-results.json /src
+    docker run --rm -v "${RepoRoot}:/src" returntocorp/semgrep:latest semgrep scan --config=auto --sarif --output /src/semgrep-results.sarif /src
     
     
     if ($?) {
-        if (Test-Path "$RepoRoot/semgrep-results.json") {
-            Write-Host "[Semgrep] Scan complete. Results saved to semgrep-results.json" -ForegroundColor Green
+        if (Test-Path "$RepoRoot/semgrep-results.sarif") {
+            Write-Host "[Semgrep] Scan complete. Results saved to semgrep-results.sarif" -ForegroundColor Green
         }
         else {
-            Write-Host "[Semgrep] Command finished, but output file 'semgrep-results.json' was NOT found." -ForegroundColor Red
+            Write-Host "[Semgrep] Command finished, but output file 'semgrep-results.sarif' was NOT found." -ForegroundColor Red
         }
     }
     else {
@@ -44,16 +44,16 @@ function Invoke-Semgrep {
 function Invoke-Trivy {
     Write-Host "`n[Trivy] Starting Filesystem Scan..." -ForegroundColor Yellow
     # Using the same image as in Nomad job
-    docker run --rm -v "${RepoRoot}:/src" aquasec/trivy:latest fs --format json --output /src/trivy-results.json /src
+    docker run --rm -v "${RepoRoot}:/src" aquasec/trivy:latest fs --format sarif --output /src/trivy-results.sarif /src
     
     
     
     if ($?) {
-        if (Test-Path "$RepoRoot/trivy-results.json") {
-            Write-Host "[Trivy] Scan complete. Results saved to trivy-results.json" -ForegroundColor Green
+        if (Test-Path "$RepoRoot/trivy-results.sarif") {
+            Write-Host "[Trivy] Scan complete. Results saved to trivy-results.sarif" -ForegroundColor Green
         }
         else {
-            Write-Host "[Trivy] Command finished, but output file 'trivy-results.json' was NOT found." -ForegroundColor Red
+            Write-Host "[Trivy] Command finished, but output file 'trivy-results.sarif' was NOT found." -ForegroundColor Red
         }
     }
     else {
@@ -62,22 +62,35 @@ function Invoke-Trivy {
 }
 
 function Invoke-SonarQube {
-    Write-Host "`n[SonarQube] Starting Scan (Placeholder)..." -ForegroundColor Yellow
-    # Placeholder for SonarQube scan
-    $sonarOutput = @"
-SonarQube execution requires a running server and sonar-scanner binary.
-This file represents where the report would be generated (or linked from).
-
-Typical output from scanner:
-INFO: Analysis report generated in 123ms, dir size=200 KB
-INFO: Analysis report compressed in 23ms, zip size=50 KB
-INFO: Analysis report uploaded in 55ms
-INFO: ANALYSIS SUCCESSFUL, you can browse http://localhost:9000/dashboard?id=sast-tools-demo
-"@
-    Set-Content -Path "$RepoRoot/sonarqube-results.txt" -Value $sonarOutput
+    Write-Host "`n[SonarQube] Starting Scan..." -ForegroundColor Yellow
     
-    if (Test-Path "$RepoRoot/sonarqube-results.txt") {
-        Write-Host "[SonarQube] Scan complete. Results saved to sonarqube-results.txt" -ForegroundColor Green
+    # Dynamically build the report paths based on what exists
+    $reportPaths = @()
+    if (Test-Path "$RepoRoot/semgrep-results.sarif") { $reportPaths += "semgrep-results.sarif" }
+    if (Test-Path "$RepoRoot/trivy-results.sarif") { $reportPaths += "trivy-results.sarif" }
+    
+    $dockerArgs = @(
+        "run", "--rm",
+        "-v", "${RepoRoot}:/usr/src",
+        "sonarsource/sonar-scanner-cli",
+        "-Dsonar.projectKey=sast-tools-demo",
+        "-Dsonar.sources=.",
+        "-Dsonar.host.url=http://host.docker.internal:9000",
+        "-Dsonar.login=admin",
+        "-Dsonar.password=admin",
+        "-Dsonar.exclusions=**/node_modules/**,**/experiments/**,**/.venv/**,**/vendor/**",
+        "-Dsonar.scm.disabled=true"
+    )
+
+    if ($reportPaths.Count -gt 0) {
+        $dockerArgs += "-Dsonar.sarif.reportPaths=$($reportPaths -join ',')"
+    }
+
+    # Execute Docker with the array of arguments
+    & docker $dockerArgs
+
+    if ($?) {
+        Write-Host "[SonarQube] Scan complete. Check your dashboard at http://localhost:9000" -ForegroundColor Green
     }
     else {
         Write-Host "[SonarQube] Scan failed." -ForegroundColor Red
