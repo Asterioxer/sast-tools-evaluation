@@ -14,10 +14,7 @@ job "trivy-vuln-scan" {
       }
 
       # Environment variables for private registry auth if needed
-      # env {
-      #   TRIVY_USERNAME = "..."
-      #   TRIVY_PASSWORD = "..."
-      # }
+      # (Credentials should be injected via protected secrets)
 
       # Scan a public image as an example
       command = "trivy"

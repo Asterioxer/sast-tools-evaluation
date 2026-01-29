@@ -14,7 +14,7 @@
 #>
 
 param(
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory = $false)]
     [ValidateSet("semgrep", "trivy", "all")]
     [string]$Tool = "all"
 )
@@ -29,7 +29,8 @@ function Run-Semgrep {
     
     if ($?) {
         Write-Host "[Semgrep] Scan complete. Results saved to semgrep-results.json" -ForegroundColor Green
-    } else {
+    }
+    else {
         Write-Host "[Semgrep] Scan failed." -ForegroundColor Red
     }
 }
@@ -41,18 +42,27 @@ function Run-Trivy {
     
     if ($?) {
         Write-Host "[Trivy] Scan complete. Results saved to trivy-results.json" -ForegroundColor Green
-    } else {
+    }
+    else {
         Write-Host "[Trivy] Scan failed." -ForegroundColor Red
     }
 }
 
 # Execution Logic
+$ExitCode = 0
+
 if ($Tool -eq "semgrep" -or $Tool -eq "all") {
     Run-Semgrep
+    if (-not $?) { $ExitCode = 1 }
 }
 
 if ($Tool -eq "trivy" -or $Tool -eq "all") {
     Run-Trivy
+    if (-not $?) { $ExitCode = 1 }
 }
 
 Write-Host "`nDone." -ForegroundColor Cyan
+if ($ExitCode -ne 0) {
+    Write-Host "One or more scans failed." -ForegroundColor Red
+    exit $ExitCode
+}
