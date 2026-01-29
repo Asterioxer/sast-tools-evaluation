@@ -46,6 +46,8 @@ tools/
 
 workflows/  
 → Reference CI/CD pipelines demonstrating SAST execution  
+  - **GitHub Actions**: `.github/workflows/sast.yml` (Runs scans on push)
+  - **Local/Docker**: `scripts/run_tools_local.ps1` (Runs scans locally)
 
 references/  
 → SAST standardization and enforcement mappings  
@@ -76,7 +78,8 @@ Together, both repositories form a complete SAST governance and implementation f
    `tools/<tool-name>/`
 
 3. Review CI/CD reference workflows  
-   `workflows/ci-sast-examples/` (includes GitHub Actions `.yml` and Nomad `.hcl`)
+3. Review CI/CD reference workflows  
+   `workflows/ci-sast-examples/` (includes GitHub Actions `.yml` and Docker scripts)
 
 4. Understand enforcement strategy  
    `references/sast-standardization-mapping.md`
