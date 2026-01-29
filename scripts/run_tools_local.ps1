@@ -22,26 +22,38 @@ param(
 $RepoRoot = Get-Location
 Write-Host "Running tools in: $RepoRoot" -ForegroundColor Cyan
 
-function Run-Semgrep {
+function Invoke-Semgrep {
     Write-Host "`n[Semgrep] Starting Scan..." -ForegroundColor Yellow
     # Using the same image as in Nomad job
     docker run --rm -v "${RepoRoot}:/src" returntocorp/semgrep:latest semgrep scan --config=auto --json --output /src/semgrep-results.json /src
     
+    
     if ($?) {
-        Write-Host "[Semgrep] Scan complete. Results saved to semgrep-results.json" -ForegroundColor Green
+        if (Test-Path "$RepoRoot/semgrep-results.json") {
+            Write-Host "[Semgrep] Scan complete. Results saved to semgrep-results.json" -ForegroundColor Green
+        }
+        else {
+            Write-Host "[Semgrep] Command finished, but output file 'semgrep-results.json' was NOT found." -ForegroundColor Red
+        }
     }
     else {
         Write-Host "[Semgrep] Scan failed." -ForegroundColor Red
     }
 }
 
-function Run-Trivy {
+function Invoke-Trivy {
     Write-Host "`n[Trivy] Starting Filesystem Scan..." -ForegroundColor Yellow
     # Using the same image as in Nomad job
     docker run --rm -v "${RepoRoot}:/src" aquasec/trivy:latest fs --format json --output /src/trivy-results.json /src
     
+    
     if ($?) {
-        Write-Host "[Trivy] Scan complete. Results saved to trivy-results.json" -ForegroundColor Green
+        if (Test-Path "$RepoRoot/trivy-results.json") {
+            Write-Host "[Trivy] Scan complete. Results saved to trivy-results.json" -ForegroundColor Green
+        }
+        else {
+            Write-Host "[Trivy] Command finished, but output file 'trivy-results.json' was NOT found." -ForegroundColor Red
+        }
     }
     else {
         Write-Host "[Trivy] Scan failed." -ForegroundColor Red
@@ -52,12 +64,12 @@ function Run-Trivy {
 $ExitCode = 0
 
 if ($Tool -eq "semgrep" -or $Tool -eq "all") {
-    Run-Semgrep
+    Invoke-Semgrep
     if (-not $?) { $ExitCode = 1 }
 }
 
 if ($Tool -eq "trivy" -or $Tool -eq "all") {
-    Run-Trivy
+    Invoke-Trivy
     if (-not $?) { $ExitCode = 1 }
 }
 
