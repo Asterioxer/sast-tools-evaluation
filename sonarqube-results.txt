@@ -1,12 +1,128 @@
-14:39:57.734 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
-14:39:57.740 INFO  Project root configuration file: NONE
-14:39:57.760 INFO  SonarScanner CLI 8.0.1.6346
-14:39:57.774 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
-14:39:58.952 INFO  Communicating with SonarQube Server 9.9.8.100196
-14:40:01.030 INFO  Load global settings
-14:40:01.226 INFO  EXECUTION FAILURE
-14:40:01.226 INFO  Total time: 3.498s
-14:40:01.226 ERROR Error during SonarScanner CLI execution
-14:40:01.226 ERROR Not authorized. Please check the properties sonar.login and sonar.password.
-14:40:01.226 ERROR 
-14:40:01.226 ERROR Re-run SonarScanner CLI using the -X switch to enable full debug logging.
+14:49:12.947 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+14:49:12.952 INFO  Project root configuration file: NONE
+14:49:12.981 INFO  SonarScanner CLI 8.0.1.6346
+14:49:12.990 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
+14:49:14.308 INFO  Communicating with SonarQube Server 9.9.8.100196
+14:49:16.125 INFO  Load global settings
+14:49:16.322 INFO  Load global settings (done) | time=197ms
+14:49:16.328 INFO  Server id: 147B411E-AZwKOlJ4DSGu9KAPOKb3
+14:49:16.349 INFO  User cache: /opt/sonar-scanner/.sonar/cache
+14:49:16.369 INFO  Load/download plugins
+14:49:16.369 INFO  Load plugins index
+14:49:16.589 INFO  Load plugins index (done) | time=220ms
+14:49:24.112 INFO  Load/download plugins (done) | time=7744ms
+14:49:24.552 INFO  Process project properties
+14:49:24.560 INFO  Process project properties (done) | time=8ms
+14:49:24.566 INFO  Execute project builders
+14:49:24.567 INFO  Execute project builders (done) | time=1ms
+14:49:24.573 INFO  Project key: sast-tools-demo
+14:49:24.573 INFO  Base dir: /usr/src
+14:49:24.573 INFO  Working dir: /tmp/.scannerwork
+14:49:24.584 INFO  Load project settings for component key: 'sast-tools-demo'
+14:49:24.803 INFO  Load quality profiles
+14:49:25.123 INFO  Load quality profiles (done) | time=320ms
+14:49:25.140 INFO  Load active rules
+14:49:28.924 INFO  Load active rules (done) | time=3783ms
+14:49:28.927 INFO  Load analysis cache
+14:49:29.017 INFO  Load analysis cache (404) | time=90ms
+14:49:29.051 WARN  Property 'sonar.password' is deprecated. It will not be supported in the future. Please instead use the 'sonar.login' parameter with a token.
+14:49:29.066 INFO  Load project repositories
+14:49:29.159 INFO  Load project repositories (done) | time=93ms
+14:49:29.185 INFO  Indexing files...
+14:49:29.185 INFO  Project configuration:
+14:49:29.186 INFO    Excluded sources: **/node_modules/**, **/experiments/**, **/.venv/**, **/vendor/**
+14:49:39.186 INFO  8 files indexed...  (last one was docs/sast-comparison.md)
+14:49:43.848 INFO  23 files indexed
+14:49:43.848 INFO  2538 files ignored because of inclusion/exclusion patterns
+14:49:43.849 INFO  Quality profile for js: Sonar way
+14:49:43.850 INFO  Quality profile for py: Sonar way
+14:49:43.850 INFO  Quality profile for yaml: Sonar way
+14:49:43.850 INFO  ------------- Run sensors on module sast-tools-demo
+14:49:43.951 INFO  Load metrics repository
+14:49:44.088 INFO  Load metrics repository (done) | time=137ms
+14:49:45.231 INFO  Sensor Python Sensor [python]
+14:49:45.234 WARN  Your code is analyzed as compatible with python 2 and 3 by default. This will prevent the detection of issues specific to python 2 or python 3. You can get a more precise analysis by setting a python version in your configuration via the parameter "sonar.python.version"
+14:49:45.248 INFO  Starting global symbols computation
+14:49:45.251 INFO  1 source file to be analyzed
+14:49:45.569 INFO  1/1 source file has been analyzed
+14:49:45.595 INFO  Starting rules execution
+14:49:45.596 INFO  1 source file to be analyzed
+14:49:45.747 INFO  1/1 source file has been analyzed
+14:49:45.747 INFO  The Python analyzer was able to leverage cached data from previous analyses for 0 out of 1 files. These files were not parsed.
+14:49:45.748 INFO  Sensor Python Sensor [python] (done) | time=517ms
+14:49:45.748 INFO  Sensor Cobertura Sensor for Python coverage [python]
+14:50:10.830 INFO  Sensor Cobertura Sensor for Python coverage [python] (done) | time=25082ms
+14:50:10.830 INFO  Sensor PythonXUnitSensor [python]
+14:50:34.984 INFO  Sensor PythonXUnitSensor [python] (done) | time=24154ms
+14:50:34.984 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+14:50:34.985 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+14:50:34.986 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+14:50:34.986 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+14:50:34.986 INFO  Sensor IaC CloudFormation Sensor [iac]
+14:50:35.026 INFO  0 source files to be analyzed
+14:50:35.049 INFO  0/0 source files have been analyzed
+14:50:35.049 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=63ms
+14:50:35.049 INFO  Sensor IaC Kubernetes Sensor [iac]
+14:50:35.065 INFO  0 source files to be analyzed
+14:50:35.084 INFO  0/0 source files have been analyzed
+14:50:35.085 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=36ms
+14:50:35.085 INFO  Sensor JavaScript analysis [javascript]
+14:50:38.322 WARN  Node.js version 22 is not recommended, you might experience issues. Please use a recommended version of Node.js [16, 18]
+14:50:38.336 INFO  1 source file to be analyzed
+14:50:38.875 INFO  1/1 source file has been analyzed
+14:50:38.875 INFO  Hit the cache for 0 out of 1
+14:50:38.877 INFO  Miss the cache for 1 out of 1: ANALYSIS_MODE_INELIGIBLE [1/1]
+14:50:38.877 INFO  Sensor JavaScript analysis [javascript] (done) | time=3792ms
+14:50:38.877 INFO  Sensor TypeScript analysis [javascript]
+14:50:38.878 INFO  No input files found for analysis
+14:50:38.878 INFO  Hit the cache for 0 out of 0
+14:50:38.878 INFO  Miss the cache for 0 out of 0
+14:50:38.878 INFO  Sensor TypeScript analysis [javascript] (done) | time=1ms
+14:50:38.878 INFO  Sensor JavaScript inside YAML analysis [javascript]
+14:50:38.891 INFO  No input files found for analysis
+14:50:38.891 INFO  Hit the cache for 0 out of 0
+14:50:38.891 INFO  Miss the cache for 0 out of 0
+14:50:38.891 INFO  Sensor JavaScript inside YAML analysis [javascript] (done) | time=13ms
+14:50:38.891 INFO  Sensor CSS Rules [javascript]
+14:50:38.892 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+14:50:38.892 INFO  Sensor CSS Rules [javascript] (done) | time=1ms
+14:50:38.892 INFO  Sensor C# Project Type Information [csharp]
+14:50:38.892 INFO  Sensor C# Project Type Information [csharp] (done) | time=0ms
+14:50:38.892 INFO  Sensor C# Analysis Log [csharp]
+14:50:38.901 INFO  Sensor C# Analysis Log [csharp] (done) | time=9ms
+14:50:38.901 INFO  Sensor C# Properties [csharp]
+14:50:38.902 INFO  Sensor C# Properties [csharp] (done) | time=1ms
+14:50:38.902 INFO  Sensor HTML [web]
+14:50:38.904 INFO  Sensor HTML [web] (done) | time=1ms
+14:50:38.904 INFO  Sensor TextAndSecretsSensor [text]
+14:50:38.911 INFO  4 source files to be analyzed
+14:50:38.948 INFO  4/4 source files have been analyzed
+14:50:38.948 INFO  Sensor TextAndSecretsSensor [text] (done) | time=44ms
+14:50:38.948 INFO  Sensor VB.NET Project Type Information [vbnet]
+14:50:38.949 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+14:50:38.950 INFO  Sensor VB.NET Analysis Log [vbnet]
+14:50:38.958 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=8ms
+14:50:38.958 INFO  Sensor VB.NET Properties [vbnet]
+14:50:38.959 INFO  Sensor VB.NET Properties [vbnet] (done) | time=1ms
+14:50:38.959 INFO  Sensor IaC Docker Sensor [iac]
+14:50:38.960 INFO  0 source files to be analyzed
+14:50:38.995 INFO  0/0 source files have been analyzed
+14:50:38.995 INFO  Sensor IaC Docker Sensor [iac] (done) | time=36ms
+14:50:38.999 INFO  ------------- Run sensors on project
+14:50:39.038 INFO  Sensor Analysis Warnings import [csharp]
+14:50:39.038 INFO  Sensor Analysis Warnings import [csharp] (done) | time=0ms
+14:50:39.039 INFO  Sensor Zero Coverage Sensor
+14:50:39.045 INFO  Sensor Zero Coverage Sensor (done) | time=7ms
+14:50:39.047 INFO  SCM Publisher is disabled
+14:50:39.049 INFO  CPD Executor 2 files had no CPD blocks
+14:50:39.049 INFO  CPD Executor Calculating CPD for 0 files
+14:50:39.050 INFO  CPD Executor CPD calculation finished (done) | time=0ms
+14:50:39.101 INFO  Analysis report generated in 49ms, dir size=125.5 kB
+14:50:39.115 INFO  Analysis report compressed in 13ms, zip size=19.4 kB
+14:50:39.484 INFO  Analysis report uploaded in 369ms
+14:50:39.486 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=sast-tools-demo
+14:50:39.486 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+14:50:39.486 INFO  More about the report processing at http://host.docker.internal:9000/api/ce/task?id=AZwKPCPxDSGu9KAPOUVN
+14:50:39.886 INFO  Analysis total time: 1:15.666 s
+14:50:39.888 INFO  EXECUTION SUCCESS
+14:50:39.888 INFO  Total time: 1:26.949s

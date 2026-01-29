@@ -16,7 +16,10 @@
 param(
     [Parameter(Mandatory = $false)]
     [ValidateSet("semgrep", "trivy", "sonarqube", "all")]
-    [string]$Tool = "all"
+    [string]$Tool = "all",
+
+    [Parameter(Mandatory = $false)]
+    [string]$SonarPassword = "admin"
 )
 
 $RepoRoot = Get-Location
@@ -77,7 +80,7 @@ function Invoke-SonarQube {
         "-Dsonar.sources=.",
         "-Dsonar.host.url=http://host.docker.internal:9000",
         "-Dsonar.login=admin",
-        "-Dsonar.password=admin",
+        "-Dsonar.password=$SonarPassword",
         "-Dsonar.exclusions=**/node_modules/**,**/experiments/**,**/.venv/**,**/vendor/**",
         "-Dsonar.scm.disabled=true"
     )
