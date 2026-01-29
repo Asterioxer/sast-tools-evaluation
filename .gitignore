@@ -230,3 +230,4 @@ experiments/tool-runs/
 trivy-results.json
 semgrep-results.json
 
+sonarqube-results.txt

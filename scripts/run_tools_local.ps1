@@ -77,13 +77,10 @@ function Invoke-SonarQube {
         "--add-host=host.docker.internal:host-gateway",
         "-v", "${RepoRoot}:/usr/src",
         "sonarsource/sonar-scanner-cli",
-        "-Dsonar.projectKey=sast-tools-demo",
-        "-Dsonar.sources=.",
+        "-Dproject.settings=/usr/src/sast-configs/sonar-project.properties",
         "-Dsonar.host.url=http://host.docker.internal:9000",
         "-Dsonar.login=admin",
-        "-Dsonar.password=$SonarPassword",
-        "-Dsonar.exclusions=**/node_modules/**,**/experiments/**,**/.venv/**,**/vendor/**",
-        "-Dsonar.scm.disabled=true"
+        "-Dsonar.password=$SonarPassword"
     )
 
     if ($reportPaths.Count -gt 0) {
