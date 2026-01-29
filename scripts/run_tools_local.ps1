@@ -74,6 +74,7 @@ function Invoke-SonarQube {
     
     $dockerArgs = @(
         "run", "--rm",
+        "--add-host=host.docker.internal:host-gateway",
         "-v", "${RepoRoot}:/usr/src",
         "sonarsource/sonar-scanner-cli",
         "-Dsonar.projectKey=sast-tools-demo",
