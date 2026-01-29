@@ -220,3 +220,13 @@ scan.txt
 output.txt
 issues.json
 database-*
+
+# Scan Reports and Secrets
+*.html
+*.pdf
+secrets.txt
+*.env
+experiments/tool-runs/
+trivy-results.json
+semgrep-results.json
+
