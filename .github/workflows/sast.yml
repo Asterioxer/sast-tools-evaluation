@@ -16,3 +16,24 @@ jobs:
         shell: pwsh
         run: |
           .\scripts\run_tools_local.ps1 -Tool all
+
+      - name: Upload Semgrep Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semgrep-results
+          path: semgrep-results.json
+
+      - name: Upload Trivy Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-results
+          path: trivy-results.json
+
+      - name: Upload SonarQube Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sonarqube-results
+          path: sonarqube-results.txt
