@@ -87,7 +87,7 @@ function Invoke-SonarQube {
     }
 
     # Execute Docker with the array of arguments
-    & docker $dockerArgs
+    & docker $dockerArgs 2>&1 | Tee-Object -FilePath "$RepoRoot/sonarqube-results.txt"
 
     if ($?) {
         Write-Host "[SonarQube] Scan complete. Check your dashboard at http://localhost:9000" -ForegroundColor Green

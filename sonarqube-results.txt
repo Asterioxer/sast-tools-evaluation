@@ -1,0 +1,12 @@
+14:39:57.734 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+14:39:57.740 INFO  Project root configuration file: NONE
+14:39:57.760 INFO  SonarScanner CLI 8.0.1.6346
+14:39:57.774 INFO  Linux 6.6.87.2-microsoft-standard-WSL2 amd64
+14:39:58.952 INFO  Communicating with SonarQube Server 9.9.8.100196
+14:40:01.030 INFO  Load global settings
+14:40:01.226 INFO  EXECUTION FAILURE
+14:40:01.226 INFO  Total time: 3.498s
+14:40:01.226 ERROR Error during SonarScanner CLI execution
+14:40:01.226 ERROR Not authorized. Please check the properties sonar.login and sonar.password.
+14:40:01.226 ERROR 
+14:40:01.226 ERROR Re-run SonarScanner CLI using the -X switch to enable full debug logging.
